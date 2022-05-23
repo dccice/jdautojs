@@ -200,9 +200,10 @@ function viewTask(flag) {
             JUDGE_TIME = 0;
             res = 1;
             break;
-        } else if (textContains('会员授权协议').exists() || textContains('立即开卡').exists()) {
-            if(ruhui())
-            {   //如果入会失败，则不再入会
+        } else if (textContains('会员授权协议').exists() || textContains('立即开卡').exists() ||
+            textContains('去开通').exists() || textContains('成功入会').exists()) {
+            if (ruhui()) { 
+                //如果入会失败，则不再入会
                 // 将当前任务序号添加到列表中，防止后续点到
                 finished_task_num[finished_task_num.length] = current_task_num;
             }
