@@ -121,7 +121,7 @@ function getNeedSelector() {
         .drawingOrder(0)
         .clickable()
         .find();
-     
+        var flag = false
           for (let index = 0; index < allSelector.length; index++) {
             var parent = allSelector[index].parent()
               if (parent != null && parent.parent() != null && parent.parent().childCount() >= 3) {
@@ -130,12 +130,14 @@ function getNeedSelector() {
                         if (parent.child(2).text().match(/每邀1个好友/)) continue
                         if (parent.child(2).text().match(/入会/)) continue
                         if (parent.child(2).text().match(/下单/)) continue
-                        goTask(parent.child(2).text(),parent,r[2]-r[1]);
-                        return
+                        flag = goTask(parent.child(2).text(),parent,r[2]-r[1]);
+                        
                     }
                 }
-        
-          
+        }
+        if(!flag){
+            console.error("没有可以做的任务了")
+            // exit()
         }
 }
 function goTask(text,parent,count) {
@@ -196,7 +198,7 @@ function goTask(text,parent,count) {
                 
         }
         console.info("进行下一个任务")
-        return;
+        return true;
 
     }
     
