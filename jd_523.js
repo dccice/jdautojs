@@ -125,7 +125,7 @@ function getNeedSelector() {
           for (let index = 0; index < allSelector.length; index++) {
             var parent = allSelector[index].parent()
               if (parent != null && parent.parent() != null && parent.parent().childCount() >= 3) {
-                    var r = parent.child(1).text().match(/(\d)\/(\d*)/)
+                    var r = parent.child(1).text().match(/(\d*)\/(\d*)/)
                     if(r[2]-r[1] > 0){
                         if (parent.child(2).text().match(/每邀1个好友/)) continue
                         if (parent.child(2).text().match(/入会/)) continue
